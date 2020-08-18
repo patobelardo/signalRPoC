@@ -102,6 +102,32 @@ Once you run this script, new notifications will come up to the screens you are 
 
 > In case you want to simulate new events with no delay, you can run the same script wiht the **-noDelay** parameter
 
+When you already have enough volume of events/notifications, you can also perform queries to the API, to get notifications for a particular user:
 
+![](imgs/2020-08-18-15-41-04.png)
+
+In case you want to update one notification, you can doing it running the POST method:
+
+![](imgs/2020-08-18-15-42-14.png)
+
+At the end, you can verify keys on Redis and statuses as well:
+
+````bash
+HGETALL notifications:user1 #all statuses for user1
+````
+
+## Summary
+
+As summary, some of the concepts covered in this PoC are:
+- notifications through a SignalR hub
+- calls made to groups
+- membership registrations user/groups
+- notification status updates saved on NoSQL repositories
+
+Since this is just a PoC to demostrate **one** approach doing this, there are other topics to define:
+- Use of Azure services for Redis and SignalR (Azure Redis Cache, Azure SignalR)
+- For performance and to reduce "chatiness", maybe integrate some queuing processing for notification status would be valuable
+- If notificaitons per user should be persisted, then some archiving mechanism can be created to keep Redis database small
+- On that same line, evaluate CosmosDB as a reliable and scalable alternative as well.
 
 
