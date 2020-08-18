@@ -1,0 +1,41 @@
+version: '2'
+services:
+  spa:
+    build: 
+      context: ./SignalRChat
+      dockerfile: Dockerfile
+    environment:
+      - notificationAPI=http://notification:80
+    ports:
+      - "5000:80"
+  notification:
+    build: 
+      context: ./notificationServiceAPI
+      dockerfile: Dockerfile
+    environment:
+      - SignalRHub=http://spa/chathub
+      - redisEndpoint=redis:6379
+      - Kestrel__EndPoints__Http__Url=http://*:80
+      - SQLConnectionString=Server=sql;Database=DemoData;User Id=sa;Password=P@ssw0rd!;
+    ports:
+      - "4300:80"
+  redis:
+    image: "redis"
+    command: ["redis-server", "--appendonly", "yes"]
+    hostname: redis
+    ports: 
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+  sql:
+    build: 
+      context: ./sql
+      dockerfile: Dockerfile
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=P@ssw0rd!
+      - MSSQL_PID=Express
+    ports:
+      - "1433:1433"
+volumes:
+  redis-data:

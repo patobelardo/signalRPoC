@@ -1,0 +1,80 @@
+﻿@page
+    <div class="container">
+        <div class="row">&nbsp;</div>
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <div class="col-3">User</div>
+                    <div class="col-4"><input type="text" id="loginUserInput" /></div>
+                </div>
+                <div class="row">
+                    <div class="col-7">
+                        <input type="button" id="loginButton" value="Login!" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <div class="col-3">User</div>
+                    <div class="col-4"><input type="text" id="userInput" /></div>
+                </div>
+                <div class="row">
+                    <div class="col-3">Message</div>
+                    <div class="col-4"><input type="text" id="messageInput" /></div>
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <div class="col-7">
+                        <input type="button" id="sendButton" value="Send Message to All" />
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="col-3">User</div>
+                    <div class="col-4"><input type="text" id="userInput1" /></div>
+                </div>
+                <div class="row">
+                    <div class="col-3">Destination Group</div>
+                    <div class="col-4"><input type="text" id="destGroup1" /></div>
+                </div>
+                <div class="row">
+                    <div class="col-3">Message</div>
+                    <div class="col-4"><input type="text" id="messageInput1" /></div>
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <div class="col-7">
+                        <input type="button" id="sendPrivateButton" value="Send Private Message" />
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="col-3">GroupName</div>
+                    <div class="col-4"><input type="text" id="groupInput" /></div>
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <div class="col-7">
+                        <input type="button" id="addGroupButton" value="Add to Group" />
+                    </div>
+                </div>
+                <div class="row"><ul id="groupList"></ul></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <ul id="messagesList"></ul>
+        </div>
+    </div>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>
